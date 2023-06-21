@@ -1,9 +1,21 @@
 apiVersion: v1
 data:
-  example.conf: "input { stdin { } }\n\nfilter {\n  grok {\n    match => { \"message\"\
-    \ => \"%{COMBINEDAPACHELOG}\" }\n  }\n  date {\n    match => [ \"timestamp\" ,\
-    \ \"dd/MMM/yyyy:HH:mm:ss Z\" ]\n  }\n}\n\noutput {\n  elasticsearch { hosts =>\
-    \ [\"localhost:9200\"] }\n  stdout { codec => rubydebug }\n}"
+  example.conf: |-
+    input { stdin { } }
+
+    filter {
+      grok {
+        match => { "message" => "%{COMBINEDAPACHELOG}" }
+      }
+      date {
+        match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+      }
+    }
+
+    output {
+      elasticsearch { hosts => ["localhost:9200"] }
+      stdout { codec => rubydebug }
+    }
 kind: ConfigMap
 metadata:
   labels:

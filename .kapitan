@@ -1,4 +1,5 @@
-version: 0.31
+version: 0.32
 compile:
  prune: true
  embed-refs: true
+ yaml-multiline-string-style: literal
