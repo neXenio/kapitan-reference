@@ -12,6 +12,6 @@ parameters:
           enable_compute_service:
             service: compute.googleapis.com
             project: \${google_project.project.project_id}
-          enable_compute_service:
+          enable_storage_component_service:
             service: storage-component.googleapis.com
             project: \${google_project.project.project_id}
