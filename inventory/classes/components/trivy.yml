@@ -19,7 +19,7 @@ parameters:
   components:
     trivy:
       type: deployment
-      image: ${trivy:image}
+      image: ${trivy.image}
       imagePullPolicy: Always
 
       args:
@@ -32,8 +32,8 @@ parameters:
               fieldPath: spec.nodeName
 
       labels:
-        app.kubernetes.io/version: ${trivy:version}
-        app.kubernetes.io/component: ${trivy:component}
+        app.kubernetes.io/version: ${trivy.version}
+        app.kubernetes.io/component: ${trivy.component}
 
       env:
         TRIVY_LISTEN: "0.0.0.0:4954"
@@ -66,13 +66,13 @@ parameters:
 
       volumes:
         data:
-          # accessModes: ${persistence:trivy:data:accessModes}
-          # storageClassName: ${persistence:trivy:data:storageclass}
+          # accessModes: ${persistence.trivy.data.accessModes}
+          # storageClassName: ${persistence.trivy.data.storageclass}
           # resources:
           #   requests:
-          #     storage: ${persistence:trivy:data:size}
+          #     storage: ${persistence.trivy.data.size}
           hostPath:
-            path: ${persistence:trivy:data:host_path}
+            path: ${persistence.trivy.data.host_path}
             type: DirectoryOrCreate
         tmp-data:
           emptyDir: {}
@@ -81,8 +81,8 @@ parameters:
         type: ClusterIP
       ports:
         http:
-          service_port: ${trivy:service:trivy:http_port}
-          container_port: ${trivy:service:trivy:http_port}
+          service_port: ${trivy.service.trivy.http_port}
+          container_port: ${trivy.service.trivy.http_port}
 
       secrets:
         trivy:

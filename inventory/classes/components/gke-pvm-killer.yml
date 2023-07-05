@@ -37,4 +37,4 @@ parameters:
           items: ['service_account_file']
           data:
             service_account_file:
-              value: ${service_accounts:gke-pvm-killer:secret}
+              value: ${service_accounts.gke-pvm-killer.secret}

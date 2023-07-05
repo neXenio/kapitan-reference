@@ -46,7 +46,7 @@ parameters:
             mytemplate.cnf:
               template: components/mysql/mytemplate.cnf.j2
               values:
-                mysql: ${mysql:settings}
+                mysql: ${mysql.settings}
 
 
       secrets:

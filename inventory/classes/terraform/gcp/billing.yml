@@ -6,6 +6,6 @@ parameters:
         google_project:
           project:
             name: ${name}
-            project_id: ${google:project}
+            project_id: ${google.project}
             billing_account: ${gcp_billing_account}
             org_id: 163756623419

@@ -11,9 +11,9 @@ parameters:
         private_key: plain:targets/${target_name}/kapicorp-tesoro-cert-key
         cacert: plain:targets/${target_name}/kapicorp-tesoro-cacert-pem
       ssl:
-        certificate: ?{${kapicorp:tesoro:refs:certificate}||randomstr}
-        private_key: ?{${kapicorp:tesoro:refs:private_key}||randomstr}
-        cacert: ?{${kapicorp:tesoro:refs:cacert}||randomstr}
+        certificate: ?{${kapicorp.tesoro.refs.certificate}||randomstr}
+        private_key: ?{${kapicorp.tesoro.refs.private_key}||randomstr}
+        cacert: ?{${kapicorp.tesoro.refs.cacert}||randomstr}
 
   components:
     tesoro:
@@ -46,11 +46,11 @@ parameters:
           mount: /certs
           data:
             cert.pem:
-              value: ${kapicorp:tesoro:ssl:certificate}
+              value: ${kapicorp.tesoro.ssl.certificate}
             cert.key:
-              value: ${kapicorp:tesoro:ssl:private_key}
+              value: ${kapicorp.tesoro.ssl.private_key}
             cacert.pem:
-              value: ${kapicorp:tesoro:ssl:cacert}
+              value: ${kapicorp.tesoro.ssl.cacert}
       webhooks:
       - name: tesoro.kapicorp.com
         failurePolicy: Fail
@@ -59,7 +59,7 @@ parameters:
             name: tesoro
             namespace: ${namespace}
             path: "/mutate"
-          caBundle: ${kapicorp:tesoro:ssl:cacert}
+          caBundle: ${kapicorp.tesoro.ssl.cacert}
         objectSelector:
           matchLabels:
             tesoro.kapicorp.com: enabled

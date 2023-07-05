@@ -19,7 +19,7 @@ parameters:
       args:
         - '-instances=$(CLOUDSQL_INSTANCE_NAME)=tcp:0.0.0.0:5432'
       env:
-        CLOUDSQL_INSTANCE_NAME: ${database:instance}
+        CLOUDSQL_INSTANCE_NAME: ${database.instance}
         GOOGLE_APPLICATION_CREDENTIALS: /opt/secrets/service_account_file
       replicas: 3
       pdb_min_available: 2
@@ -48,4 +48,4 @@ parameters:
           items: ['service_account_file']
           data:
             service_account_file:
-              value: ${service_accounts:postgres-proxy:secret}
+              value: ${service_accounts.postgres-proxy.secret}

@@ -24,9 +24,9 @@ parameters:
         MONGODB_DISABLE_SYSTEM_LOG: 'no'
         MONGODB_SYSTEM_LOG_VERBOSITY: '0'
         MONGODB_ENABLE_DIRECTORY_PER_DB: 'no'
-        MONGODB_USERNAME: ${pritunl:auth:username}
-        MONGODB_PASSWORD: ${pritunl:auth:password}
-        MONGODB_DATABASE: ${pritunl:database:name}
+        MONGODB_USERNAME: ${pritunl.auth.username}
+        MONGODB_PASSWORD: ${pritunl.auth.password}
+        MONGODB_DATABASE: ${pritunl.database.name}
       healthcheck:
         readiness:
           type: command

@@ -11,10 +11,10 @@ parameters:
         google_project_service:
           enable_container_service:
             service: container.googleapis.com
-            project: \${google_project.project.project_id}
+            project: ${tag:google_project.project.project_id}
           enable_cloudresourcemanager_service:
             service: cloudresourcemanager.googleapis.com
-            project: \${google_project.project.project_id}
+            project: ${tag:google_project.project.project_id}
           enable_serviceusage_service:
             service: serviceusage.googleapis.com
-            project: \${google_project.project.project_id}
+            project: ${tag:google_project.project.project_id}

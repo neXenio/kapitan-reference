@@ -14,16 +14,16 @@ parameters:
             storage_class: MULTI_REGIONAL
         google_storage_bucket_iam_binding:
           binding:
-            bucket: \${google_storage_bucket.terraform-state.name}
+            bucket: ${tag:google_storage_bucket.terraform-state.name}
             role: "roles/storage.admin"
             members:
-            - serviceAccount:\${google_service_account.terraform.email}
+            - serviceAccount:${tag:google_service_account.terraform.email}
         google_organization_iam_member:
           terraform_owner:
               org_id: 163756623419
               role: "roles/owner"
-              member: serviceAccount:\${google_service_account.terraform.email}
+              member: serviceAccount:${tag:google_service_account.terraform.email}
           terraform_billing:
               org_id: 163756623419
               role: "roles/billing.user"
-              member: serviceAccount:\${google_service_account.terraform.email}
+              member: serviceAccount:${tag:google_service_account.terraform.email}

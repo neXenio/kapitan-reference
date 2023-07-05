@@ -17,7 +17,7 @@ parameters:
     # -------------------------------------------------
     helm_values:
       chart_name: rabbitmq-cluster-operator
-      chart_version: ${rabbitmq-operator:chart_version}
+      chart_version: ${rabbitmq-operator.chart_version}
       namespace: ${namespace}
 
   # -------------------------------------------------
@@ -26,17 +26,17 @@ parameters:
   kapitan:
     dependencies:
     - type: helm
-      output_path: components/charts/${rabbitmq-operator:chart_name}/${rabbitmq-operator:chart_version}/${rabbitmq-operator:application_version}
+      output_path: components/charts/${rabbitmq-operator.chart_name}/${rabbitmq-operator.chart_version}/${rabbitmq-operator.application_version}
       source: https://charts.bitnami.com/bitnami
-      version: ${rabbitmq-operator:chart_version}
-      chart_name: ${rabbitmq-operator:chart_name}
+      version: ${rabbitmq-operator.chart_version}
+      chart_name: ${rabbitmq-operator.chart_name}
     compile:
     - input_type: helm
       input_paths:
-        - components/charts/${rabbitmq-operator:chart_name}/${rabbitmq-operator:chart_version}/${rabbitmq-operator:application_version}
+        - components/charts/${rabbitmq-operator.chart_name}/${rabbitmq-operator.chart_version}/${rabbitmq-operator.application_version}
       output_path: manifests
       helm_params:
-        namespace: ${rabbitmq-operator:namespace}
-        name: ${rabbitmq-operator:chart_name}
-        output_file: ${rabbitmq-operator:chart_name}.yml
-      helm_values: ${rabbitmq-operator:helm_values}
+        namespace: ${rabbitmq-operator.namespace}
+        name: ${rabbitmq-operator.chart_name}
+        output_file: ${rabbitmq-operator.chart_name}.yml
+      helm_values: ${rabbitmq-operator.helm_values}

@@ -13,7 +13,7 @@ parameters:
     # -------------------------------------------------
     helm_values:
       chart_name: cert-manager
-      chart_version: ${cert-manager:chart_version}
+      chart_version: ${cert-manager.chart_version}
       namespace: ${namespace}
       helm_values:
         name: cert-manager
@@ -39,16 +39,16 @@ parameters:
   kapitan:
     dependencies:
     - type: helm
-      output_path: components/charts/${cert-manager:chart_name}
+      output_path: components/charts/${cert-manager.chart_name}
       source: https://charts.jetstack.io/
-      version: ${cert-manager:chart_version}
-      chart_name: ${cert-manager:chart_name}
+      version: ${cert-manager.chart_version}
+      chart_name: ${cert-manager.chart_name}
     compile:
     - input_type: helm
       input_paths:
-        - components/charts/${cert-manager:chart_name}
+        - components/charts/${cert-manager.chart_name}
       output_path: .
       helm_params:
-        namespace: ${cert-manager:namespace}
-        release_name: ${cert-manager:chart_name}
-      helm_values: ${cert-manager:helm_values}
+        namespace: ${cert-manager.namespace}
+        release_name: ${cert-manager.chart_name}
+      helm_values: ${cert-manager.helm_values}

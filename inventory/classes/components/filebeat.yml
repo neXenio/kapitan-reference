@@ -9,7 +9,7 @@ parameters:
     filebeat:
       name: filebeat
       type: daemonset
-      image: ${filebeat:image}:${filebeat:version}
+      image: ${filebeat.image}:${filebeat.version}
 
       # ServiceAccount
       service_account:
